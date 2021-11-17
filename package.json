@@ -5,9 +5,7 @@
   "repository": "git@github.com:edgeorgie/SmartDevs-Backend.git",
   "author": "Edwin Jorge <ed.jorge1122@gmail.com>",
   "license": "MIT",
-  "engines": {
-    "node": "^12.22.0"
-  },
+  
   "scripts": {
     "start": "ts-node index.ts"
   },

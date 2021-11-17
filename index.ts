@@ -1,5 +1,5 @@
 import express from "express"
-import { conexionDB } from "./db"
+import { conexionDB } from "./db/db"
 import cors from "cors"
 const app = express()
 
