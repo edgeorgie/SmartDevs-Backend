@@ -1,12 +1,13 @@
-import {connect} from 'mongoose'
+import mongoose from 'mongoose'
 
 const conexionDB = async () => {
-  return await connect('mongodb+srv://dbSmartDevs:ZQuIcWTk9VzRB6D1@cluster0.7op1x.mongodb.net/proyectosSmartDevs?retryWrites=true&w=majority')
+  return await mongoose 
+  .connect(process.env.DATABASE_URL)
   .then(() => {
     console.log('Conexion a la base de datos establecida')
   })
   .catch(err => {
-    console.log('Erros conectando a la base de datos', err)
+    console.log('Error conectando a la base de datos', err)
   })
 }
 
