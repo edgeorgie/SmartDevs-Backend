@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const conexionDB = async () => {
-  return await mongoose.connect(process.env.BASE_DE_DATOS_URL)
+  return await mongoose.connect('mongodb+srv://dbSmartDevs:ZQuIcWTk9VzRB6D1@cluster0.7op1x.mongodb.net/proyectosSmartDevs?retryWrites=true&w=majority')
   .then(() => {
     console.log('Conexion a la base de datos establecida')
   })

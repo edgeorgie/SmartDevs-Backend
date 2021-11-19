@@ -1,6 +1,6 @@
-const express = require('express')
-const { conexionDB } = require('./db/db')
-const cors = require('cors')
+import express from "express"
+import { conexionDB } from "./db/db"
+import cors from "cors"
 const app = express()
 
 
