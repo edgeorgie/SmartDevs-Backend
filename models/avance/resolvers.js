@@ -1,4 +1,4 @@
-import { ModeloAvance } from './avance.js.';
+const { ModeloAvance } = require('./avance.js.');
 
 const resolversAvance = {
   Query: {
@@ -26,4 +26,4 @@ const resolversAvance = {
   },
 };
 
-export { resolversAvance };
+exports.resolversAvance = resolversAvance;

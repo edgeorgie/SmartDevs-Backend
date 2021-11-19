@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express';
+const { gql } = require('apollo-server-express');
 
 const tiposAvance = gql`
   type Avance {
@@ -18,4 +18,4 @@ const tiposAvance = gql`
   }
 `;
 
-export { tiposAvance };
+exports.tiposAvance = tiposAvance;
