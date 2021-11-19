@@ -1,7 +1,7 @@
-import {connect} from 'mongoose'
+const mongoose = require('mongoose')
 
 const conexionDB = async () => {
-  return await connect('mongodb+srv://dbSmartDevs:ZQuIcWTk9VzRB6D1@cluster0.7op1x.mongodb.net/proyectosSmartDevs?retryWrites=true&w=majority')
+  return await mongoose.connect('mongodb+srv://dbSmartDevs:ZQuIcWTk9VzRB6D1@cluster0.7op1x.mongodb.net/proyectosSmartDevs?retryWrites=true&w=majority')
   .then(() => {
     console.log('Conexion a la base de datos establecida')
   })
@@ -10,4 +10,4 @@ const conexionDB = async () => {
   })
 }
 
-export { conexionDB }
+exports.conexionDB = conexionDB
