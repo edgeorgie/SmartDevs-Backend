@@ -42,4 +42,4 @@ const userSchema = new Schema({
   
   const UserModel = model('User', userSchema);
   
-  export { UserModel };
+  exports.UserModel = UserModel; 
