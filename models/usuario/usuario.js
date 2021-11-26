@@ -12,7 +12,7 @@ const userSchema = new Schema({
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
       },
 
-      message: 'El formato del correo electrónico está malo.',
+      message: 'Ingrese un formato de correo válido',
     },
   },
   identificacion: {
@@ -38,11 +38,21 @@ const userSchema = new Schema({
     enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],
     default: 'PENDIENTE',
     
-  }
-},
-  {
-    versionKey: false,
-})
+  },
+});
+userSchema.virtual('avancesCreados', {
+  ref: 'Avance',
+  localField: '_id',
+  foreignField: 'creadoPor',
+});
+
+userSchema.virtual('inscripciones', {
+  ref: 'Inscripcion',
+  localField: '_id',
+  foreignField: 'estudiante',
+});
   
   
-  module.exports = model('User', userSchema);
+const UserModel = model('User', userSchema);
+
+export { UserModel };
