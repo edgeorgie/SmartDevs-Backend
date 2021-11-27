@@ -1,4 +1,4 @@
-const { ModeloAvance } = require('./avance.js.');
+const { ModeloAvance } = require('./avance.js');
 
 const resolversAvance = {
   Query: {
