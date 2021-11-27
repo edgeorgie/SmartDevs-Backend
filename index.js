@@ -1,9 +1,9 @@
 const express = require('express')
 const { conexionDB } = require('./db/db')
 const cors = require('cors')
-const app = express()
-const Usuario = require('./routes/GestionUsuarios/index.routes')
-const morgan = require('morgan')
+const app = express();
+//const Usuario = require('./routes/GestionUsuarios/index.routes')
+//const morgan = require('morgan')
 require('dotenv').config()
 const { ApolloServer } = require ('apollo-server-express');
 const { tipos } = require('./graphql/tipos.js');
@@ -19,11 +19,21 @@ const { resolvers } =require('./graphql/resolvers.js');
 const server = new ApolloServer({
   typeDefs: tipos,
   resolvers: resolvers,
+  context: ({ req }) => {
+    const token = req.headers?.authorization ?? null;
+    if (token) {
+      const userData = getUserData(token);
+      if (userData) {
+        return { userData };
+      }
+    }
+    return null;
+  },
 });
 
 app.use(express.json())
-app.use(morgan('dev'))
-app.use(express.urlencoded({ extended: false }));
+//app.use(morgan('dev'))
+//app.use(express.urlencoded({ extended: false }));
 //app.use(Usuario)
 
 app.use(cors())
