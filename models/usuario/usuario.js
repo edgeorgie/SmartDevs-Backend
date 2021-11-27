@@ -55,4 +55,5 @@ userSchema.virtual('inscripciones', {
   
 const UserModel = model('User', userSchema);
 
-exports.UserModel = UserModel;
+
+exports.UserModel= UserModel
