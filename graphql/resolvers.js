@@ -14,4 +14,4 @@ const { resolversAutenticacion } = require('./auth/resolvers.js');
   resolversAutenticacion,
 ];
 
-exports.module = resolvers
+exports.resolvers = resolvers;
