@@ -20,4 +20,4 @@ const tipos = [
   tiposAutenticacion,
 ];
 
-exports.module = tipos
+exports.tipos = tipos;

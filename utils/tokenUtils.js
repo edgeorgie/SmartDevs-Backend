@@ -25,5 +25,5 @@ const generateToken = (payload) => {
   });
 };
 
-exports.module = generateToken; 
-exports.module = validateToken;
+exports.generateToken = generateToken; 
+exports.validateToken = validateToken;

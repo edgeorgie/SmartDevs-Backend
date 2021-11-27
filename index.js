@@ -5,7 +5,7 @@ const app = express();
 //const Usuario = require('./routes/GestionUsuarios/index.routes')
 //const morgan = require('morgan')
 require('dotenv').config()
-const { ApolloServer } = require ('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
 const { tipos } = require('./graphql/tipos.js');
 const { resolvers } =require('./graphql/resolvers.js');
 

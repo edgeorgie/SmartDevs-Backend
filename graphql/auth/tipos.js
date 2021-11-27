@@ -20,4 +20,4 @@ const tiposAutenticacion = gql`
   }
 `;
 
-exports.module = tiposAutenticacion;
+exports.tiposAutenticacion = tiposAutenticacion;
