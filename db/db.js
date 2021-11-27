@@ -5,9 +5,9 @@ const conexionDB = async () => {
   .then(() => {
     console.log('Conexion a la base de datos establecida')
   })
-  .catch(err => {
-    console.log('Error conectando a la base de datos', err)
-  })
+  .catch((e) => {
+    console.error('Error conectando a la base de datos', e)
+  });
 }
 
 exports.conexionDB = conexionDB
