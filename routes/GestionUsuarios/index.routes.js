@@ -1,9 +1,9 @@
-const { Router } = require('express')
-const Usuario = require('../../models/usuario/usuario')
+//const { Router } = require('express')
+//const Usuario = require('../../models/usuario/usuario')
 
-const router = Router()
+//const router = Router()
 
-router.get("/", async (req, res) => {
+/*router.get("/", async (req, res) => {
   console.log("GET /usuarios")
 
 })
@@ -44,4 +44,4 @@ router.post("/editar-usuario/:id", (req, res) => {
   console.log("Post /editar-usuario/:id");
 })
 
-module.exports = router
+module.exports = router*/

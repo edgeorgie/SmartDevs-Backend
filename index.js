@@ -1,13 +1,17 @@
-const express = require('express')
-const { conexionDB } = require('./db/db')
-const cors = require('cors')
-const app = express();
+import express from 'express';
+import cors from 'cors';
+import { conexionDB } from './db/db.js';
+import { ApolloServer } from 'apollo-server-express';
+import dotenv from 'dotenv';
+import { tipos } from './graphql/tipos.js';
+import { resolvers } from './graphql/resolvers.js';
+
 //const Usuario = require('./routes/GestionUsuarios/index.routes')
 //const morgan = require('morgan')
-require('dotenv').config()
-const { ApolloServer } = require('apollo-server-express');
-const { tipos } = require('./graphql/tipos.js');
-const { resolvers } =require('./graphql/resolvers.js');
+
+//require('dotenv').config()
+
+dotenv.config();
 
 //app.listen(process.env.PUERTO, async () => {
  // await conexionDB()
@@ -19,7 +23,7 @@ const { resolvers } =require('./graphql/resolvers.js');
 const server = new ApolloServer({
   typeDefs: tipos,
   resolvers: resolvers,
-  context: ({ req }) => {
+  /*context: ({ req }) => {
     const token = req.headers?.authorization ?? null;
     if (token) {
       const userData = getUserData(token);
@@ -28,15 +32,17 @@ const server = new ApolloServer({
       }
     }
     return null;
-  },
+  },*/
 });
 
-app.use(express.json())
+const app = express();
+
+app.use(express.json());
 //app.use(morgan('dev'))
 //app.use(express.urlencoded({ extended: false }));
 //app.use(Usuario)
 
-app.use(cors())
+app.use(cors());
 
 app.listen({ port: process.env.PORT || 3000 }, async () => {
   await conexionDB();

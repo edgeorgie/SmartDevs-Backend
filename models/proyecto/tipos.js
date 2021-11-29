@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express')
+import { gql } from 'apollo-server-express';
 
 const tiposProyecto = gql`
   type Objetivo {
@@ -7,6 +7,19 @@ const tiposProyecto = gql`
     tipo: Enum_TipoObjetivo!
   }
   input crearObjetivo {
+    descripcion: String!
+    tipo: Enum_TipoObjetivo!
+  }
+  input editProyecto {
+    nombre: String
+    presupuesto: Float
+    fechaInicio: Date
+    fechaFin: Date
+    estado: Enum_EstadoProyecto
+    fase: Enum_FaseProyecto
+    lider: String
+  }
+  input editObjetivo {
     descripcion: String!
     tipo: Enum_TipoObjetivo!
   }
@@ -21,6 +34,7 @@ const tiposProyecto = gql`
     lider: Usuario!
     objetivos: [Objetivo]
     avances: [Avance]
+    inscripciones: [Inscripcion]
   }
   type Query {
     Proyectos: [Proyecto]
@@ -45,4 +59,4 @@ const tiposProyecto = gql`
   }
 `;
 
-exports.tiposProyecto = tiposProyecto;
+export { tiposProyecto };

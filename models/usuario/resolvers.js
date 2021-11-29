@@ -1,13 +1,42 @@
-const { UserModel } = require ('./usuario.js');
+import { UserModel } from './usuario.js';
+import bcrypt from 'bcrypt';
 
 const resolversUsuario = {
   Query: {
     Usuarios: async (parent, args) => {
-      const usuarios = await UserModel.find();
+      const usuarios = await UserModel.find()
+      .populate({
+        path: 'inscripciones',
+        populate: {
+          path: 'proyecto',
+          populate: [{ path: 'lider' }, { path: 'avances' }],
+        },
+      })
+      .populate({
+        path: 'avancesCreados',
+        populate: {
+          path: 'proyecto',
+          populate: [{ path: 'lider' }, { path: 'avances' }],
+        },
+      });
       return usuarios;
     },
     Usuario: async (parent, args) => {
-      const usuario = await UserModel.findOne({ _id: args._id });
+      const usuario = await UserModel.findOne({ _id: args._id })
+      .populate({
+        path: 'inscripciones',
+        populate: {
+          path: 'proyecto',
+          populate: [{ path: 'lider' }, { path: 'avances' }],
+        },
+      })
+      .populate({
+        path: 'avancesCreados',
+        populate: {
+          path: 'proyecto',
+          populate: [{ path: 'lider' }, { path: 'avances' }],
+        },
+      });
       return usuario;
     },
   },
@@ -34,7 +63,9 @@ const resolversUsuario = {
         identificacion: args.identificacion,
         correo: args.correo,
         estado: args.estado,
-      });
+      },
+      { new: true }
+      );
 
       return usuarioEditado;
     },
@@ -50,4 +81,4 @@ const resolversUsuario = {
   },
 };
 
-exports.resolversUsuario = resolversUsuario;
+export { resolversUsuario };

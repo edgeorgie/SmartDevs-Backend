@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
 
@@ -56,4 +56,4 @@ userSchema.virtual('inscripciones', {
 const UserModel = model('User', userSchema);
 
 
-exports.UserModel= UserModel;
+export { UserModel };

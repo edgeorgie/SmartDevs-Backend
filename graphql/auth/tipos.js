@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+/*const { gql } = require('apollo-server-express');
 
 const tiposAutenticacion = gql`
   type Token {
@@ -20,4 +20,4 @@ const tiposAutenticacion = gql`
   }
 `;
 
-exports.tiposAutenticacion = tiposAutenticacion;
+exports.tiposAutenticacion = tiposAutenticacion;*/

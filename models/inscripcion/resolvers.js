@@ -1,4 +1,4 @@
-const {InscriptonModel} = require('./inscripcion.js');
+import { InscriptionModel } from './inscripcion.js';
 
 const resolverInscripciones = {
   Query: {
@@ -22,10 +22,10 @@ const resolverInscripciones = {
         fechaIngreso: Date.now(),
       },
       {new : true}
-      );
+    );
       return inscripcionAprobada;
     },
   },
 };
 
-exports.resolverInscripciones = resolverInscripciones;
+export {resolverInscripciones};

@@ -1,4 +1,4 @@
-const { gql } = require ( 'apollo-server-express');
+import { gql } from 'apollo-server-express';
 
 const tiposInscripcion = gql`
   type Inscripcion {
@@ -22,4 +22,4 @@ const tiposInscripcion = gql`
   }
 `;
 
-exports.tiposInscripcion = tiposInscripcion;
+export { tiposInscripcion };

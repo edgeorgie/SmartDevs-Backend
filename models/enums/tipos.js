@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+import { gql } from 'apollo-server-express';
 
 const tiposEnums = gql`
   enum Enum_EstadoUsuario {
@@ -29,6 +29,12 @@ const tiposEnums = gql`
     GENERAL
     ESPECIFICO
   }
+
+  enum Enum_EstadoInscripcion {
+    ACEPTADO
+    RECHAZADO
+    PENDIENTE
+  }
 `;
 
-exports.tiposEnums = tiposEnums;
+export { tiposEnums };

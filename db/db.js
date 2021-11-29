@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-async function conexionDB() {
-  return await mongoose.connect(process.env.BASE_DE_DATOS_URL)
-    .then(() => {
+const conexionDB = async () => {
+  return await mongoose
+  .connect(process.env.BASE_DE_DATOS_URL)
+  .then(() => {
       console.log('Conexion a la base de datos establecida');
     })
     .catch((e) => {
@@ -10,4 +11,4 @@ async function conexionDB() {
     });
 }
 
-exports.conexionDB = conexionDB;
+export { conexionDB };

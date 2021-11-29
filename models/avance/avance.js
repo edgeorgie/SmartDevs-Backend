@@ -1,8 +1,6 @@
-const mongoose = require('mongoose');
-const { ProjectModel } = require('../proyecto/proyecto.js');
-const { UserModel } = require('../usuario/usuario.js');
-
-
+import mongoose from 'mongoose';
+import { ProjectModel } from '../proyecto/proyecto.js';
+import { UserModel } from '../usuario/usuario.js';
 const { Schema, model } = mongoose;
 
 const avanceSchema = new Schema({
@@ -33,4 +31,4 @@ const avanceSchema = new Schema({
 
 const ModeloAvance = model('Avance', avanceSchema);
 
-exports.ModeloAvance = ModeloAvance;
+export {ModeloAvance};

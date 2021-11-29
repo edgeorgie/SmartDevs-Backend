@@ -417,6 +417,15 @@ apollo-server-types@^3.4.0:
     apollo-server-caching "^3.3.0"
     apollo-server-env "^4.2.0"
 
+apollo-server@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/apollo-server/-/apollo-server-3.5.0.tgz#37024385658b73949f3c2e7d940fd39b19a6081b"
+  integrity sha512-7NkCgK9wjyx/jAbdytId/EPwp+dU4Bn+nktZERh3PGU4sv3TO9Twlsg62eAw5FRRTYQglbGDlCIcx9o1bvg0Ww==
+  dependencies:
+    apollo-server-core "^3.5.0"
+    apollo-server-express "^3.5.0"
+    express "^4.17.1"
+
 "aproba@^1.0.3 || ^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-2.0.0.tgz#52520b8ae5b569215b354efc0caa3fe1e45a8adc"

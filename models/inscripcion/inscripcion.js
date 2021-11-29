@@ -1,13 +1,14 @@
-const mongoose = require('mongoose') ;
-const { Schema, model } = mongoose;
-const {ProjectModel} = require('../proyecto/proyecto.js');
-const  { UserModel } = require('../usuario/usuario.js');
+import mongoose from 'mongoose';
+import {ProjectModel} from '../proyecto/proyecto.js';
+import { UserModel } from '../usuario/usuario.js';
 
+const { Schema, model } = mongoose;
 
 const inscriptionSchema = new Schema({
   estado: {
     type: String,
-    enum: ['ACEPTADA', 'RECHAZADA', 'PENDIENTE'],
+    enum: ['ACEPTADO', 'RECHAZADO', 'PENDIENTE'],
+    default: 'PENDIENTE',
     required: true,
   },
   fechaIngreso: {
@@ -32,4 +33,4 @@ const inscriptionSchema = new Schema({
 
 const InscriptionModel = model('Inscripcion', inscriptionSchema);
 
-exports.InscriptionModel = InscriptionModel;
+export { InscriptionModel };

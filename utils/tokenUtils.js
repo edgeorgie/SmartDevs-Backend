@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+/*const jwt = require('jsonwebtoken');
 
 const validateToken = (token) => {
   if (token) {
@@ -26,4 +26,4 @@ const generateToken = (payload) => {
 };
 
 exports.generateToken = generateToken; 
-exports.validateToken = validateToken;
+exports.validateToken = validateToken;*/

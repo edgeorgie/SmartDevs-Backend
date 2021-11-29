@@ -1,4 +1,4 @@
-const { ProjectModel } = require('./proyecto.js')
+import { ProjectModel } from './proyecto.js';
 
 const resolversProyecto = {
   Query: {
@@ -79,4 +79,4 @@ const resolversProyecto = {
   },
 };
 
-exports.resolversProyecto = resolversProyecto;
+export { resolversProyecto };

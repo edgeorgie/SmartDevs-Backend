@@ -1,7 +1,6 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
+import { UserModel } from '../usuario/usuario.js';
 const { Schema, model } = mongoose;
-const { UserModel } = require('../usuario/usuario.js')
-
 
 
 const projectSchema = new Schema(
@@ -63,12 +62,12 @@ projectSchema.virtual('avances', {
   foreignField: 'proyecto',
 });
 
-projectSchema.virtual("inscripciones", {
-  ref: "Inscripcion",
-  localField: "_id",
-  foreignField: "proyecto",
+projectSchema.virtual('inscripciones', {
+  ref: 'Inscripcion',
+  localField: '_id',
+  foreignField: 'proyecto',
 });
 
 const ProjectModel = model('Proyecto', projectSchema);
 
-exports.ProjectModel = ProjectModel;
+export { ProjectModel };

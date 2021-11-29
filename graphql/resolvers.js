@@ -1,17 +1,15 @@
-const { resolversProyecto } = require('../models/proyecto/resolvers.js');
-const { resolversUsuario } = require('../models/usuario/resolvers.js');
-const { resolversAvance } = require('../models/avance/resolvers.js');
-const { resolverInscripciones } = require('../models/inscripcion/resolvers.js');
-const { resolversAutenticacion } = require('./auth/resolvers.js');
+import { resolversProyecto } from '../models/proyecto/resolvers.js';
+import { resolversUsuario } from '../models/usuario/resolvers.js';
+import { resolversAvance } from '../models/avance/resolvers.js';
+import { resolverInscripciones } from '../models/inscripcion/resolvers.js';
+/*const { resolversAutenticacion } = require('./auth/resolvers.js');*/
 
 
 
- const resolvers = [
+export const resolvers = [
   resolversUsuario,
   resolversProyecto,
   resolversAvance,
   resolverInscripciones,
-  resolversAutenticacion,
+  /*resolversAutenticacion,*/
 ];
-
-exports.resolvers = resolvers;
