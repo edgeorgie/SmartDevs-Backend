@@ -1,11 +1,12 @@
 import { UserModel } from './usuario.js';
-import bcrypt from 'bcrypt';
+//import bcrypt from 'bcrypt';
 
 const resolversUsuario = {
   Query: {
     Usuarios: async (parent, args) => {
       const usuarios = await UserModel.find()
-      .populate({
+      .populate(
+        {
         path: 'inscripciones',
         populate: {
           path: 'proyecto',

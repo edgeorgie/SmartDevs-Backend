@@ -37,4 +37,4 @@ const tiposUsuario = gql`
   }
 `;
 
-export {tiposUsuario};
+export { tiposUsuario };
