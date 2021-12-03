@@ -33,6 +33,21 @@ const resolversAvance = {
 
       return avanceEditado;
     },
+
+    agregarNuevaObservacion: async (parents, args) => {
+      const addObservacion = args.observacion;
+      const avanceObjetivos = await ModeloAvance.findByIdAndUpdate(args._id, 
+        {    
+          $addToSet: {
+            observaciones: addObservacion,
+          },
+      
+      },
+      {new:true});
+
+      return addObservacion;
+    },
+
   },
 };
 
