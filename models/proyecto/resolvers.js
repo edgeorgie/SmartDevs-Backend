@@ -1,12 +1,24 @@
+import { InscriptionModel } from '../inscripcion/inscripcion.js';
+import { UserModel } from '../usuario/usuario.js';
 import { ProjectModel } from './proyecto.js';
 
 const resolversProyecto = {
+  Proyecto: {
+    lider: async (parent, args, context) => {
+      console.log(parent.lider);
+      const usr = await UserModel.findOne({
+        _id: parent.lider.toString(),
+      });
+      return usr;
+    },
+  },
+
   Query: {
     Proyectos: async (parent, args, context) => {
       const proyectos = await ProjectModel.find().populate([
-      { path : 'lider'},
-      { path :'avances'},
-      { path : 'inscripciones', populate: {path : 'estudiante'}},
+      //{ path : 'lider'},
+      //{ path :'avances'},
+      //{ path : 'inscripciones', populate: {path : 'estudiante'}},
       ]);
       return proyectos;
     },
@@ -45,7 +57,7 @@ const resolversProyecto = {
         },
         { new: true }
       );
-      console.log(proyectoObjetivo);
+      //console.log(proyectoObjetivo);
       return proyectoObjetivo;
     },
     editarObjetivo: async (parent, args) => {
