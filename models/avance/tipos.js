@@ -1,11 +1,17 @@
 import { gql } from 'apollo-server-express';
 
 const tiposAvance = gql`
+  type Observacion {
+    _id: ID!
+    descripcion: String!
+  }
+  input crearObservacion {descripcion: String!} 
+
   type Avance {
     _id: ID!
     fecha: Date!
     descripcion: String!
-    observaciones: [String]
+    observaciones: [Observacion]
     proyecto: Proyecto!
     creadoPor: Usuario!
   }
@@ -16,8 +22,9 @@ const tiposAvance = gql`
   type Mutation {
     crearAvance(fecha: Date!, descripcion: String!, proyecto: String!, creadoPor: String!): Avance
     editarAvanceEstudiante(_id: String!, descripcion: String! ): Avance
-    agregarNuevaObservacion(_id: String!, observaciones: [String] ): Avance
+    agregarNuevaObservacion(idAvance:String!, campos: crearObservacion!): Avance
   }
+  
 `;
 
 export { tiposAvance };
