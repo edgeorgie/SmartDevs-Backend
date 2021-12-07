@@ -1,6 +1,9 @@
-/*const { UserModel } = require('../../models/usuario/usuario.js');
-const bcrypt = require('bcrypt');
-const { generateToken } = require('../../utils/tokenUtils.js');
+//const { UserModel } = require('../../models/usuario/usuario.js');
+//const bcrypt = require('bcrypt');
+//const { generateToken } = require('../../utils/tokenUtils.js');
+import { UserModel } from '../../models/usuario/usuario.js';
+import bcrypt from 'bcrypt';
+import { generateToken } from '../../utils/tokenUtils.js';
 
 const resolversAutenticacion = {
   Mutation: {
@@ -68,5 +71,4 @@ const resolversAutenticacion = {
   },
 };
 
-exports.resolversAutenticacion = resolversAutenticacion;
-*/
+export { resolversAutenticacion };
