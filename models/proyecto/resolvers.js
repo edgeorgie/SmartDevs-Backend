@@ -5,21 +5,22 @@ import { ProjectModel } from './proyecto.js';
 const resolversProyecto = {
   Proyecto: {
     lider: async (parent, args, context) => {
-      console.log(parent.lider);
       const usr = await UserModel.findOne({
         _id: parent.lider.toString(),
       });
       return usr;
     },
+    inscripciones: async (parent, args, context) => {
+      const inscripciones = await InscriptionModel.find({
+        proyecto: parent._id,
+      });
+      return inscripciones;
+    },
   },
 
   Query: {
     Proyectos: async (parent, args, context) => {
-      const proyectos = await ProjectModel.find().populate([
-      //{ path : 'lider'},
-      //{ path :'avances'},
-      //{ path : 'inscripciones', populate: {path : 'estudiante'}},
-      ]);
+      const proyectos = await ProjectModel.find();
       return proyectos;
     },
   },
@@ -57,7 +58,6 @@ const resolversProyecto = {
         },
         { new: true }
       );
-      //console.log(proyectoObjetivo);
       return proyectoObjetivo;
     },
     editarObjetivo: async (parent, args) => {
@@ -85,7 +85,6 @@ const resolversProyecto = {
         },
         { new: true }
       );
-      console.log(proyectoObjetivo);
       return proyectoObjetivo;
     },
   },
