@@ -1,5 +1,5 @@
 import { UserModel } from './usuario.js';
-//import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 import { InscriptionModel } from '../inscripcion/inscripcion.js';
 
 const resolversUsuario = {
@@ -49,11 +49,16 @@ const resolversUsuario = {
   },
   Mutation: {
     crearUsuario: async (parent, args) => {
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(args.password, salt);
+
       const usuarioCreado = await UserModel.create({
         nombre: args.nombre,
         apellido: args.apellido,
         identificacion: args.identificacion,
         correo: args.correo,
+        password :hashedPassword,
         rol: args.rol,
       });
 

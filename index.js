@@ -5,6 +5,8 @@ import { ApolloServer } from 'apollo-server-express';
 import dotenv from 'dotenv';
 import { tipos } from './graphql/tipos.js';
 import { resolvers } from './graphql/resolvers.js';
+import jwt from 'jsonwebtoken'
+import { validateToken } from './utils/tokenUtils.js';
 
 //const Usuario = require('./routes/GestionUsuarios/index.routes')
 //const morgan = require('morgan')
@@ -13,6 +15,18 @@ import { resolvers } from './graphql/resolvers.js';
 
 dotenv.config();
 
+const getUserData = (token) => {
+  const verificacion = validateToken(token.split(' ')[1]);
+  if (verificacion.data) {
+    return verificacion.data;
+  } else {
+    return null;
+  }
+};
+
+
+
+
 //app.listen(process.env.PUERTO, async () => {
  // await conexionDB()
  // console.log('Servidor corriendo en el puerto ', process.env.PUERTO)
@@ -20,9 +34,16 @@ dotenv.config();
 //})
 
 
-const server = new ApolloServer({
-  typeDefs: tipos,
-  resolvers: resolvers,
+//const server = new ApolloServer({
+  //typeDefs: tipos,
+  //resolvers: resolvers,
+  //context: ({ req,res }) => {
+    //const token = req.headers.authorization ?? null;
+
+    //const context = getUser(token);
+
+    //return { context };
+  //},
   /*context: ({ req }) => {
     const token = req.headers?.authorization ?? null;
     if (token) {
@@ -33,7 +54,23 @@ const server = new ApolloServer({
     }
     return null;
   },*/
+//});
+
+const server = new ApolloServer({
+  typeDefs: tipos,
+  resolvers: resolvers,
+  context: ({ req, res }) => {
+    const token = req.headers?.authorization ?? null;
+    if (token) {
+      const userData = getUserData(token);
+      if (userData) {
+        return { userData };
+      }
+    }
+    return null;
+  },
 });
+
 
 const app = express();
 

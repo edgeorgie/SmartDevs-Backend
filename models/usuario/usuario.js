@@ -15,6 +15,10 @@ const userSchema = new Schema({
       message: 'Ingrese un formato de correo válido',
     },
   },
+  password:{
+    type:String,
+    required : true
+  },
   identificacion: {
     type: String,
     required: true,
