@@ -27,7 +27,7 @@ const tiposUsuario = gql`
   }
 
   type Query {
-    Usuarios: [Usuario]
+    Usuarios(filtro: FiltroUsuarios): [Usuario]
     Usuario(_id: String!): Usuario
     
   }

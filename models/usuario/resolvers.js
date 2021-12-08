@@ -14,10 +14,11 @@ const resolversUsuario = {
     }, 
 
   },
+  
   Query: {
     Usuarios: async (parent, args, context) => {
-      const usuarios = await UserModel.find()
-      .populate([
+      const usuarios = await UserModel.find({...args.filtro});
+      /*.populate([
         {
         path: 'inscripciones',
         populate: {
@@ -28,7 +29,7 @@ const resolversUsuario = {
       {
         path: 'proyectosLiderados',
       }
-    ]);
+    ]);*/
       //.populate({
         //path: 'avancesCreados',
         //populate: {
