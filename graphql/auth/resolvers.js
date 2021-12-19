@@ -46,7 +46,7 @@ const resolversAutenticacion = {
         };
       }
     },
-
+    
     refreshToken: async (parent, args, context) => {
       console.log('contexto', context);
       if (!context.userData) {

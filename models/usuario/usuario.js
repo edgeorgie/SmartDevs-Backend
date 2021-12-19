@@ -12,37 +12,36 @@ const userSchema = new Schema({
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
       },
 
-      message: 'Ingrese un formato de correo válido',
-    },
+      message: "Ingrese un formato de correo válido"
+    }
   },
-  password:{
-    type:String,
-    required : true
+  password: {
+    type: String,
+    required: true
   },
   identificacion: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   nombre: {
     type: String,
-    required: true,
+    required: true
   },
   apellido: {
     type: String,
-    required: true,
+    required: true
   },
   rol: {
     type: String,
     required: true,
-    enum: ['ESTUDIANTE', 'LIDER', 'ADMINISTRADOR'],
+    enum: ["ESTUDIANTE", "LIDER", "ADMINISTRADOR"]
   },
   estado: {
     type: String,
-    enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],
-    default: 'PENDIENTE',
-    
-  },
+    enum: ["PENDIENTE", "AUTORIZADO", "NO_AUTORIZADO"],
+    default: "PENDIENTE"
+  }
 });
 
 userSchema.virtual('proyectosLiderados', {

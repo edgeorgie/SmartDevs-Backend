@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express';
+import { gql } from "apollo-server-express";
 
 const tiposUsuario = gql`
   type Usuario {
@@ -10,27 +10,29 @@ const tiposUsuario = gql`
     rol: Enum_Rol!
     estado: Enum_EstadoUsuario
     inscripciones: [Inscripcion]
-    proyectos:[Proyecto]
     avancesCreados: [Avance]
     proyectosLiderados: [Proyecto]
   }
 
   input FiltroUsuarios {
     _id: ID
-    nombre: String
-    apellido: String
     identificacion: String
     correo: String
     rol: Enum_Rol
     estado: Enum_EstadoUsuario
-    
+  }
+
+  input CamposEditarPerfil {
+    nombre: String
+    apellido: String
+    identificacion: String
   }
 
   type Query {
     Usuarios(filtro: FiltroUsuarios): [Usuario]
     Usuario(_id: String!): Usuario
-    
   }
+
   type Mutation {
     crearUsuario(
       nombre: String!
@@ -39,8 +41,9 @@ const tiposUsuario = gql`
       correo: String!
       rol: Enum_Rol!
       estado: Enum_EstadoUsuario
-      password :String!
+      password: String!
     ): Usuario
+
     editarUsuario(
       _id: String!
       nombre: String!
@@ -49,6 +52,9 @@ const tiposUsuario = gql`
       correo: String!
       estado: Enum_EstadoUsuario!
     ): Usuario
+
+    editarPerfil(_id: String!, campos: CamposEditarPerfil!): Usuario
+
     eliminarUsuario(_id: String, correo: String): Usuario
   }
 `;
