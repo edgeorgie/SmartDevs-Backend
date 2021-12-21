@@ -50,16 +50,29 @@ const resolversAvance = {
       return avanceEditado;
     },
 
-    agregarNuevaObservacion: async (parents, args) => {
-      const addObservacion = 
-      await ModeloAvance.findByIdAndUpdate({_id:args.idAvance},
-        {
-        $addToSet: {observaciones:{...args.campos,},
-      },
+    crearObservacion: async (parents, args) => {
+      const avanceModificado = 
+        await ModeloAvance.findByIdAndUpdate(
+          args._id,
+          {
+            $addToSet:
+            {
+              observaciones: args.observacion,
+            },
       },  {new:true});
 
-      return addObservacion;
+      return avanceModificado;
     },
+
+    editarObservacion: async (parents, args) => {
+      const observacionModificada = await ModeloAvance.findByIdAndUpdate(
+        args._id,
+        { ...args.campos },
+        { new: true }
+      );
+
+      return observacionModificada;
+    }
 
   },
 };
